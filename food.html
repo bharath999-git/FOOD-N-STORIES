@@ -1,0 +1,83 @@
+<!doctype html>
+
+
+<h3>Categories</h3>
+<div class="tags" id="categoryTags">
+<button data-cat="all" class="tag active">All</button>
+<button data-cat="recipe" class="tag">Recipe</button>
+<button data-cat="memory" class="tag">Memory</button>
+<button data-cat="culture" class="tag">Culture</button>
+<button data-cat="review" class="tag">Review</button>
+</div>
+</div>
+
+
+<div class="create">
+<h3>Create a post</h3>
+<form id="postForm">
+<input required placeholder="Post Title" id="postTitle">
+<select id="postRegion">
+<option value="india">India</option>
+<option value="italy">Italy</option>
+<option value="mexico">Mexico</option>
+<option value="japan">Japan</option>
+<option value="usa">USA</option>
+<option value="others">Others</option>
+</select>
+<select id="postCategory">
+<option value="recipe">Recipe</option>
+<option value="memory">Memory</option>
+<option value="culture">Culture</option>
+<option value="review">Review</option>
+</select>
+<textarea id="postContent" rows="6" placeholder="Write your story, recipe or experience..."></textarea>
+<label class="fileLabel">Add image/video
+<input id="mediaInput" type="file" accept="image/*,video/*">
+</label>
+<div class="preview" id="mediaPreview"></div>
+<button type="submit" class="btn">Publish</button>
+</form>
+</div>
+
+
+<footer class="sidefoot">
+<small>Made with ❤️ — Food & Stories</small>
+</footer>
+</aside>
+
+
+<main class="main">
+<header class="topbar">
+<div class="searchWrap">
+<input id="searchInput" placeholder="Search posts, ingredients, places...">
+</div>
+<div class="controls">
+<button id="newPostBtn" class="btn ghost">New Post</button>
+</div>
+</header>
+
+
+<section class="cards" id="postsGrid" aria-live="polite">
+<!-- Cards inserted here by JS -->
+</section>
+</main>
+</div>
+
+
+<!-- Modal for viewing a single post -->
+<div class="modal" id="postModal" aria-hidden="true">
+<div class="modalContent">
+<button class="closeModal" id="closeModal">✕</button>
+<div class="modalLeft" id="modalMedia"></div>
+<div class="modalRight">
+<h2 id="modalTitle"></h2>
+<div class="meta" id="modalMeta"></div>
+<div class="modalBody" id="modalBody"></div>
+</div>
+</div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
