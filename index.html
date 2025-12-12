@@ -1,120 +1,75 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Food & Stories</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
-</head>
+<h3 class="side-head">Select Region</h3>
+<select id="regionSelect">
+<option value="all">All Regions</option>
+<option value="india">India</option>
+<option value="italy">Italy</option>
+<option value="usa">USA</option>
+<option value="mexico">Mexico</option>
+<option value="japan">Japan</option>
+<option value="others">Others</option>
+</select>
 
-<body>
-  <div class="app">
-    
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="brand">
-        <h1>Food & Stories</h1>
-        <p>Share recipes, culture & memories</p>
-      </div>
 
-      <div class="filters">
-        <h3>Explore by region</h3>
-        <label>
-          <select id="regionSelect">
-            <option value="all">All Regions</option>
-            <option value="india">India</option>
-            <option value="italy">Italy</option>
-            <option value="mexico">Mexico</option>
-            <option value="japan">Japan</option>
-            <option value="usa">USA</option>
-            <option value="others">Others</option>
-          </select>
-        </label>
+<h3 class="side-head">Create a Post</h3>
+<form id="postForm">
+<input id="postTitle" placeholder="Title" required>
 
-        <h3>Categories</h3>
-        <div class="tags" id="categoryTags">
-          <button data-cat="all" class="tag active">All</button>
-          <button data-cat="recipe" class="tag">Recipe</button>
-          <button data-cat="memory" class="tag">Memory</button>
-          <button data-cat="culture" class="tag">Culture</button>
-          <button data-cat="review" class="tag">Review</button>
-        </div>
-      </div>
 
-      <div class="create">
-        <h3>Create a post</h3>
+<select id="postRegion">
+<option value="india">India</option>
+<option value="italy">Italy</option>
+<option value="usa">USA</option>
+<option value="mexico">Mexico</option>
+<option value="japan">Japan</option>
+<option value="others">Others</option>
+</select>
 
-        <form id="postForm">
-          <input required placeholder="Post Title" id="postTitle">
 
-          <select id="postRegion">
-            <option value="india">India</option>
-            <option value="italy">Italy</option>
-            <option value="mexico">Mexico</option>
-            <option value="japan">Japan</option>
-            <option value="usa">USA</option>
-            <option value="others">Others</option>
-          </select>
+<textarea id="postContent" rows="6" placeholder="Write your story or recipe..." required></textarea>
 
-          <select id="postCategory">
-            <option value="recipe">Recipe</option>
-            <option value="memory">Memory</option>
-            <option value="culture">Culture</option>
-            <option value="review">Review</option>
-          </select>
 
-          <label for="postContent">Your story</label>
-          <textarea id="postContent" rows="6" placeholder="Write your story, recipe or experience..."></textarea>
+<label class="fileLabel">Upload Image/Video
+<input id="mediaInput" type="file" accept="image/*,video/*">
+</label>
 
-          <label class="fileLabel">Add image/video
-            <input id="mediaInput" type="file" accept="image/*,video/*">
-          </label>
 
-          <div class="preview" id="mediaPreview"></div>
+<div class="preview" id="mediaPreview"></div>
 
-          <button type="submit" class="btn">Publish</button>
-        </form>
-      </div>
 
-      <footer class="sidefoot">
-        <small>Made with ❤️ — Food & Stories</small>
-      </footer>
-    </aside>
+<button class="btn" type="submit">Publish</button>
+</form>
+</aside>
 
-    <!-- Main Content -->
-    <main class="main" role="main">
-      <header class="topbar">
-        <div class="searchWrap">
-          <input id="searchInput" placeholder="Search posts...">
-        </div>
-        <button id="newPostBtn" class="btn ghost">New Post</button>
-      </header>
 
-      <section class="cards" id="postsGrid" aria-live="polite"></section>
-    </main>
-  </div>
+<!-- MAIN CONTENT -->
+<main class="main">
+<header class="topbar">
+<input id="searchInput" class="search" placeholder="Search...">
+</header>
 
-  <!-- Modal -->
-  <div class="modal" id="postModal">
-    <div class="modalContent">
-      <button class="closeModal" id="closeModal">✕</button>
 
-      <div class="modalLeft" id="modalMedia"></div>
+<section id="postsGrid" class="cards"></section>
+</main>
+</div>
 
-      <div class="modalRight">
-        <h2 id="modalTitle"></h2>
-        <div class="meta" id="modalMeta"></div>
-        <div class="modalBody" id="modalBody"></div>
-      </div>
-    </div>
-  </div>
 
-  <script src="script.js"></script>
+<!-- MODAL VIEW -->
+<div id="postModal" class="modal" aria-hidden="true">
+<div class="modalContent">
+<button id="closeModal" class="closeModal">✕</button>
+<div id="modalMedia" class="modalLeft"></div>
+<div class="modalRight">
+<h2 id="modalTitle"></h2>
+<div id="modalMeta" class="meta"></div>
+<p id="modalBody"></p>
+</div>
+</div>
+</div>
+
+
+<script src="script.js"></script>
 </body>
 </html>
