@@ -1,75 +1,100 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food & Stories - Share Your Culinary Journey</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">🍽️ Food & Stories</div>
+            <div class="tagline">Share Your Culinary Journey</div>
+            
+            <button class="create-btn" onclick="openCreateModal()">✨ Create New Post</button>
+            
+            <div class="region-filter">
+                <h3>🌍 Explore by Region</h3>
+                <button class="region-btn active" onclick="filterByRegion('all')">🌐 All Regions</button>
+                <button class="region-btn" onclick="filterByRegion('Asia')">🥢 Asia</button>
+                <button class="region-btn" onclick="filterByRegion('Europe')">🍝 Europe</button>
+                <button class="region-btn" onclick="filterByRegion('Americas')">🌮 Americas</button>
+                <button class="region-btn" onclick="filterByRegion('Africa')">🍛 Africa</button>
+                <button class="region-btn" onclick="filterByRegion('Middle East')">🥙 Middle East</button>
+                <button class="region-btn" onclick="filterByRegion('Oceania')">🦐 Oceania</button>
+            </div>
+        </div>
 
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Discover Food Stories from Around the World</h1>
+                <p>Explore culinary traditions, recipes, and experiences shared by food lovers globally</p>
+            </div>
 
-<h3 class="side-head">Select Region</h3>
-<select id="regionSelect">
-<option value="all">All Regions</option>
-<option value="india">India</option>
-<option value="italy">Italy</option>
-<option value="usa">USA</option>
-<option value="mexico">Mexico</option>
-<option value="japan">Japan</option>
-<option value="others">Others</option>
-</select>
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
 
+    <!-- Create Post Modal -->
+    <div class="modal" id="createModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCreateModal()">&times;</span>
+            <h2 style="margin-bottom: 30px; font-size: 32px; color: #2d3436;">Share Your Food Story</h2>
+            
+            <form id="createPostForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Title *</label>
+                    <input type="text" id="postTitle" placeholder="Give your story a captivating title..." required>
+                </div>
 
-<h3 class="side-head">Create a Post</h3>
-<form id="postForm">
-<input id="postTitle" placeholder="Title" required>
+                <div class="form-group">
+                    <label>Region/Country *</label>
+                    <select id="postRegion" required>
+                        <option value="">Select a region...</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Americas">Americas</option>
+                        <option value="Africa">Africa</option>
+                        <option value="Middle East">Middle East</option>
+                        <option value="Oceania">Oceania</option>
+                    </select>
+                </div>
 
+                <div class="form-group">
+                    <label>Your Story *</label>
+                    <textarea id="postContent" placeholder="Share your culinary experience, cultural insights, recipe, or food memories..." required></textarea>
+                </div>
 
-<select id="postRegion">
-<option value="india">India</option>
-<option value="italy">Italy</option>
-<option value="usa">USA</option>
-<option value="mexico">Mexico</option>
-<option value="japan">Japan</option>
-<option value="others">Others</option>
-</select>
+                <div class="form-group">
+                    <label>Upload Images/Videos</label>
+                    <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                        <div style="font-size: 48px; margin-bottom: 10px;">📸</div>
+                        <div style="color: #636e72;">Click to upload images or videos</div>
+                        <input type="file" id="fileInput" accept="image/*,video/*" multiple onchange="previewFiles()">
+                    </div>
+                    <div class="preview-images" id="previewContainer"></div>
+                </div>
 
+                <button type="submit" class="submit-btn">🚀 Publish Story</button>
+            </form>
+        </div>
+    </div>
 
-<textarea id="postContent" rows="6" placeholder="Write your story or recipe..." required></textarea>
+    <!-- View Post Modal -->
+    <div class="modal" id="viewModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeViewModal()">&times;</span>
+            <div class="post-view" id="postView">
+                <!-- Post content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
 
-
-<label class="fileLabel">Upload Image/Video
-<input id="mediaInput" type="file" accept="image/*,video/*">
-</label>
-
-
-<div class="preview" id="mediaPreview"></div>
-
-
-<button class="btn" type="submit">Publish</button>
-</form>
-</aside>
-
-
-<!-- MAIN CONTENT -->
-<main class="main">
-<header class="topbar">
-<input id="searchInput" class="search" placeholder="Search...">
-</header>
-
-
-<section id="postsGrid" class="cards"></section>
-</main>
-</div>
-
-
-<!-- MODAL VIEW -->
-<div id="postModal" class="modal" aria-hidden="true">
-<div class="modalContent">
-<button id="closeModal" class="closeModal">✕</button>
-<div id="modalMedia" class="modalLeft"></div>
-<div class="modalRight">
-<h2 id="modalTitle"></h2>
-<div id="modalMeta" class="meta"></div>
-<p id="modalBody"></p>
-</div>
-</div>
-</div>
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
